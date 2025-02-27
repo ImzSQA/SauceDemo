@@ -18,7 +18,7 @@ public class BaseTestSingleton {
     }
 
     @BeforeMethod
-    // Public method to provide access to the WebDriver instance
+    // Public method to provide access to the WebDriver instance  https://chatgpt.com/c/67c04b0e-bf70-8000-b7c3-3dc441dbc529
     public static void getDriver() {
         if (driver == null) {
             synchronized (BaseTestSingleton.class) { // Ensuring thread safety
