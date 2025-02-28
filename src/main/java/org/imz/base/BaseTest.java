@@ -1,8 +1,5 @@
 package org.imz.base;
 
-
-
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,7 +14,7 @@ public class BaseTest {
     }
 
     @AfterClass
-    public void teardown() {
+    public void tearDown() {
         DriverManagerSingleton.getInstance().quitDriver();
     }
 }
