@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "validAccounts")
+    @Test(dataProvider = "validAccounts",priority = 1)
     public void testValidMultipleLogin(String username, String password) {
         if (driver != null) {
             driver.get(Cons.BASE_WEB);
