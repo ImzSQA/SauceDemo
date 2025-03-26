@@ -34,6 +34,18 @@ public class LoginTest extends BaseTest {
 
     }
 
+    @Test(dataProvider = "validAccounts",priority = 3)
+    public void testinValidLogin(String username, String password) {
+        if (driver != null) {
+            driver.get(Cons.BASE_WEB);
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(username, password);
+            Assert.assertTrue(driver.getCurrentUrl().contains("inventory"), "Login failed for: " + username);
+
+        } else
+            System.out.println("Failed at testValidLogin @Test 1");
+
+    }
 
 
 

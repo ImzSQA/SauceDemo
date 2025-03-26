@@ -11,7 +11,6 @@ public class LogoutTest extends BaseTest {
 
     @Test(priority = 2)
     public void testLogout() {
-
         LogoutPage LogoutPage = new LogoutPage(driver);
         LogoutPage.logout();
         Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo"), "Logout failed!");
