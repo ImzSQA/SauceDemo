@@ -1,65 +1,48 @@
 package org.imz.tests;
 
-import net.bytebuddy.build.Plugin;
+
 import org.imz.base.BaseTest;
 import org.imz.pages.LoginPage;
-import org.imz.utils.LoginModel;
-import org.imz.utils.SecretsUtil;
+import org.imz.utils.*;
 import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.Assert;
 
-import java.util.List;
 
-import static org.testng.Assert.assertTrue;
-
+import java.nio.file.Paths;
 
 public class LoginTest extends BaseTest {
 
 
-
-/*
-    @Test
-    public void testValidLogin() {
-        if (driver != null) {
-            driver.get(String.valueOf(SecretsUtil.getSecret("url")));
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.login(SecretsUtil.getSecret("username"), SecretsUtil.getSecret("password"));
-            assertTrue(driver.getCurrentUrl().contains("inventory"));
-        } else System.out.println("Failed at testValidLogin @Test 1");
+    @DataProvider(name = "validAccounts")
+    public Object[][] validAccounts() {
+        String filePath = Paths.get("src", "test", "resources", "secrets.json").toString();
+        return JsonDatareader.getLoginData(filePath);
     }
 
-*/
 
-
-    @Test
-    public void testInValidLogin() {
+    @Test(dataProvider = "validAccounts")
+    public void testValidMultipleLogin(String username, String password) {
         if (driver != null) {
-            driver.get("https://www.saucedemo.com/");
+            driver.get(Cons.BASE_WEB);
             LoginPage loginPage = new LoginPage(driver);
-            authLogin(loginPage);
+            loginPage.login(username, password);
+            Assert.assertTrue(driver.getCurrentUrl().contains("inventory"), "Login failed for: " + username);
 
-        } else {
+        } else
             System.out.println("Failed at testValidLogin @Test 2");
 
-        }
     }
 
-    private void authLogin(LoginPage loginPage) {
-        List<LoginModel> loginList = SecretsUtil.loadSecrets();
-        for (int i = 0; i <= loginList.size(); i++) {
 
-            loginPage.login(loginList.get(i).getUsername(), loginList.get(i).getPassword());
-
-            boolean isvalid = driver.getCurrentUrl().contains("inventory");
-            if (isvalid) testLogout();
-            else System.out.println(isvalid);
-        }
-    }
-
-    @Test
+    @Test(priority = 2)
     public void testLogout() {
-        driver.findElement(By.className("bm-burger-button")).click();
-        driver.findElement(By.id("logout_sidebar_link")).click();
+        ElementFluentWaitUtility.getElementByFluentWait(By.className("bm-burger-button"), driver).click();
+        ElementFluentWaitUtility.getElementByFluentWait(By.id("logout_sidebar_link"), driver).click();
+
+        // Assert logout successful
+        Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo"), "Logout failed!");
     }
 
 }
