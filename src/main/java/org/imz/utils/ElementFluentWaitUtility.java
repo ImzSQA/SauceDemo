@@ -2,58 +2,35 @@ package org.imz.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By;
 
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
-import java.util.function.Function;
+
 
 public class ElementFluentWaitUtility {
 
 
-    public static WebElement getElementByFluentWait(By by, WebDriver driver) {
+    public static WebElement getElementByFluentWait(WebElement element, int timeout, int pollingTime, WebDriver webDriver) {
 
 
-        FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20))  // Maximum wait time
-                .pollingEvery(Duration.ofSeconds(2))  // Check every 2 seconds
+        FluentWait<WebDriver> wait = new FluentWait<>(webDriver)
+                .withTimeout(Duration.ofSeconds(timeout))  // Maximum wait
+                .pollingEvery(Duration.ofSeconds(pollingTime))  // Check every
                 .ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
 
-        // Wait until the element is visible
-        WebElement element = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                WebElement ele = driver.findElement(by);
-                if (ele.isDisplayed()) {
-                    return ele;
-                } else {
-                    return null;
-                }
+
+        return wait.until(driver -> {
+            if (element.isDisplayed()) {
+                return element;
+            } else {
+                return null;
             }
         });
 
-        return element;
+
     }
 
-    public static WebElement getElementByFluentWait(WebElement webElement, WebDriver driver) {
 
-        FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20))  // Maximum wait time
-                .pollingEvery(Duration.ofSeconds(2))  // Check every 2 seconds
-                .ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
-
-        // Wait until the element is visible
-        WebElement element = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                WebElement ele = webElement;
-                if (ele.isDisplayed()) {
-                    return ele;
-                } else {
-                    return null;
-                }
-            }
-        });
-        return element;
-    }
 }

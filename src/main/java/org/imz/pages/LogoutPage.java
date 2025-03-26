@@ -1,10 +1,10 @@
 package org.imz.pages;
 
+import org.imz.utils.ElementFluentWaitUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.imz.base.BaseTest;
 
 public class LogoutPage {
 
@@ -26,12 +26,8 @@ public class LogoutPage {
 
 
     public void logout() {
-
-        bmBtn.click();
-
-        logoutButton.click();
-
-
+        ElementFluentWaitUtility.getElementByFluentWait(bmBtn, 10, 500, driver).click();
+        ElementFluentWaitUtility.getElementByFluentWait(logoutButton, 10, 500, driver).click();
     }
 
 }
