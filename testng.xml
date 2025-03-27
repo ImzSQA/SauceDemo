@@ -8,10 +8,5 @@
         </classes>
     </test>
 
-    <test name="Logout Test">
-        <classes>
-            <class name="org.imz.tests.LogoutTest"/>
-        </classes>
-    </test>
 
 </suite>

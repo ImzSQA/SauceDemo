@@ -48,8 +48,7 @@ public class LoginTest extends BaseTest {
 
     @Test(dataProvider = "testLockedLoginData",priority = 3)
     public void testLockedLogin(String username, String password) {
-        if (driver != null) {
-            driver.get(Cons.BASE_WEB);
+        if (driver != null) {driver.get(Cons.BASE_WEB);
             LoginPage loginPage = new LoginPage(driver);
             loginPage.login(username, password);
             Assert.assertTrue(driver.findElement(By.className("error-button")).isDisplayed(), "Login locked for: " + username);
