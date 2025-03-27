@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class JsonDatareader {
 
-    public static Object[][] getLoginData(String filePath) {
+    public static Object[][] getValidLoginData(String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode rootNode = objectMapper.readTree(new File(filePath));
@@ -27,4 +27,16 @@ public class JsonDatareader {
             return new Object[0][0]; // Return an empty array if an error occurs
         }
     }
+
+   /* public static Object[][] getInValidLoginData() {
+
+
+        Object[][] inValidLoginData = {
+                {"locked_out_user", "secret_sauce"}
+        };
+
+
+            return inValidLoginData;
+
+    }*/
 }
