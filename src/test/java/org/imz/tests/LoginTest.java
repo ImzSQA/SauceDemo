@@ -6,10 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.imz.base.BaseTest;
 import org.imz.pages.LoginPage;
+import org.imz.pages.LogoutPage;
 import org.imz.utils.*;
 import org.openqa.selenium.By;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.Assert;
 
 
@@ -18,6 +18,15 @@ import java.nio.file.Paths;
 public class LoginTest extends BaseTest {
 
     private static final Logger logger = LogManager.getLogger(LoginTest.class);
+    private LoginPage loginPage;
+
+    @BeforeSuite
+    public void navigateToBaseUrl() {
+        driver.get(Cons.BASE_WEB);
+        loginPage = new LoginPage(driver);
+
+        logger.info("Initialized pages and navigated to base URL");
+    }
 
     @DataProvider(name = "validAccounts")
     public Object[][] validAccounts() {
@@ -27,17 +36,18 @@ public class LoginTest extends BaseTest {
 
     @DataProvider(name = "testLockedLoginData")
     public Object[][] getLoginData() {
-        return new Object[][] {
+        return new Object[][]{
                 {"locked_out_user", "secret_sauce"}
         };
     }
 
 
-    @Test(dataProvider = "validAccounts",priority = 1)
+    @Test(dataProvider = "validAccounts", priority = 1)
     public void testValidMultipleLogin(String username, String password) {
         if (driver != null) {
-            driver.get(Cons.BASE_WEB);
-            LoginPage loginPage = new LoginPage(driver);
+            if (!driver.getCurrentUrl().equals(Cons.BASE_WEB)) {
+                driver.get(Cons.BASE_WEB);
+            }
             loginPage.login(username, password);
             Assert.assertTrue(driver.getCurrentUrl().contains("inventory"), "Login failed for: " + username);
             logger.info("Login successful!");
@@ -46,10 +56,12 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = "testLockedLoginData",priority = 3)
+    @Test(dataProvider = "testLockedLoginData", priority = 3)
     public void testLockedLogin(String username, String password) {
-        if (driver != null) {driver.get(Cons.BASE_WEB);
-            LoginPage loginPage = new LoginPage(driver);
+        if (driver != null) {
+            if (!driver.getCurrentUrl().equals(Cons.BASE_WEB)) {
+                driver.get(Cons.BASE_WEB);
+            }
             loginPage.login(username, password);
             Assert.assertTrue(driver.findElement(By.className("error-button")).isDisplayed(), "Login locked for: " + username);
 
@@ -57,6 +69,8 @@ public class LoginTest extends BaseTest {
             System.out.println("Failed at testLockedLogin @Test 3");
 
     }
+
+
 
 
 
