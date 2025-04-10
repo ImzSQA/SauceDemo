@@ -2,6 +2,7 @@ package org.imz.tests;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.imz.base.BaseTest;
 import org.imz.pages.LogoutPage;
 
 import org.imz.utils.Cons;
@@ -9,11 +10,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class LogoutTest extends LoginTest {
+public class LogoutTest extends BaseTest {
     private static final Logger logger = LogManager.getLogger(LogoutTest.class);
     private final LogoutPage logoutPage = new LogoutPage(driver);
 
-    @Test(dependsOnMethods = "testValidMultipleLogin", priority = 2)
+    @Test( priority = 3)
     public void ensureLoggedOut() {
         if (driver != null) {
             try {
