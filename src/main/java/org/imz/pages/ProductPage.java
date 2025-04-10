@@ -1,20 +1,18 @@
 package org.imz.pages;
 
 
-import org.checkerframework.common.value.qual.StringVal;
 import org.imz.utils.ElementFluentWaitUtility;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class LoginPage {
+public class ProductPage {
 
     WebDriver driver;
 
-    public LoginPage(WebDriver driver) {
+    public ProductPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
@@ -31,15 +29,7 @@ public class LoginPage {
     WebElement loginButton;
 
 
-    @FindBy(className = "error-button")
-    WebElement errorButton;
-
-    public boolean isErrorButtonDisplayed() {
-        return ElementFluentWaitUtility.getElementByFluentWait(errorButton, 10, 500, driver).isDisplayed();
-    }
-
-
-    public void login(String user, String pass) {
+    public void ProductPage(String user, String pass) {
 
         ElementFluentWaitUtility.getElementByFluentWait(userName, 10, 500, driver).sendKeys(user);
         ElementFluentWaitUtility.getElementByFluentWait(password, 10, 500, driver).sendKeys(pass);

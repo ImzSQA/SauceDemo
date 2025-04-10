@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Selenium Test Suite">
+<suite name="Sauce Demo Test Suite">
 
-    <test name="Login Test">
+   <!-- <test name="Login Test">
         <classes>
-            <class name="org.imz.tests.LoginTest">
+            &lt;!&ndash;<class name="org.imz.tests.LoginTest">
             <methods>
                 <include name="testValidMultipleLogin"/>
                 <include name="testLockedLogin"/>
             </methods>
-            </class>
+            </class>&ndash;&gt;
 
 
         </classes>
-
     </test>
-
+-->
 </suite>

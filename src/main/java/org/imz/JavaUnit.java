@@ -1,14 +1,21 @@
 package org.imz;
 
-import java.util.HashMap;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class JavaUnit {
 
 
     public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://demoqa.com/select-menu");
+        driver.manage().window().maximize();
+        driver.findElement(By.id("selectOne")).click();
 
-        getprint(5, 5);
-    }
+
+         }
 
     public static void getprint(int row, int column) {
         int num =1;
