@@ -15,16 +15,19 @@ public class LogoutTest extends LoginTest {
 
     @Test(dependsOnMethods = "testValidMultipleLogin", priority = 2)
     public void ensureLoggedOut() {
-        try {
-            if (!driver.getCurrentUrl().equals(Cons.BASE_WEB)) {
-                logoutPage.logout();
-                logger.info("Logout successful");
-                Assert.assertEquals(driver.getCurrentUrl(), Cons.BASE_WEB,
-                        "Failed to return to login page after logout");
+        if (driver != null) {
+            try {
+                if (!driver.getCurrentUrl().equals(Cons.BASE_WEB)) {
+                    logoutPage.logout();
+                    logger.info("Logout successful");
+                    Assert.assertEquals(driver.getCurrentUrl(), Cons.BASE_WEB,
+                            "Failed to return to login page after logout");
+                }
+
+            } catch (Exception e) {
+                logger.error("Logout encountered exception, navigating directly to login page", e);
+                driver.get(Cons.BASE_WEB);
             }
-        } catch (Exception e) {
-            logger.error("Logout encountered exception, navigating directly to login page", e);
-            driver.get(Cons.BASE_WEB);
         }
     }
 }
