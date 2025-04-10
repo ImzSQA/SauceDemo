@@ -2,17 +2,20 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Sauce Demo Test Suite">
 
-   <!-- <test name="Login Test">
+    <test name="Login Test">
         <classes>
-            &lt;!&ndash;<class name="org.imz.tests.LoginTest">
+           <class name="org.imz.tests.LoginTest">
             <methods>
                 <include name="testValidMultipleLogin"/>
                 <include name="testLockedLogin"/>
             </methods>
-            </class>&ndash;&gt;
-
+            </class>
+           <class name="org.imz.tests.LogoutTest">
+              <methods>
+                 <include name="ensureLoggedOut"/>
+              </methods>
+           </class>
 
         </classes>
     </test>
--->
 </suite>

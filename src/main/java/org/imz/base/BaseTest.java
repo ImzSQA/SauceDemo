@@ -2,7 +2,9 @@ package org.imz.base;
 
 
 import org.openqa.selenium.WebDriver;
+
 import org.testng.annotations.AfterSuite;
+
 import org.imz.utils.DriverManagerSingleton;
 import org.testng.annotations.BeforeSuite;
 

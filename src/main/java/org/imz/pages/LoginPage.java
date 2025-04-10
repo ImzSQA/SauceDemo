@@ -1,9 +1,8 @@
 package org.imz.pages;
 
 
-import org.checkerframework.common.value.qual.StringVal;
+
 import org.imz.utils.ElementFluentWaitUtility;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,6 +32,8 @@ public class LoginPage {
 
     @FindBy(className = "error-button")
     WebElement errorButton;
+
+
 
     public boolean isErrorButtonDisplayed() {
         return ElementFluentWaitUtility.getElementByFluentWait(errorButton, 10, 500, driver).isDisplayed();
