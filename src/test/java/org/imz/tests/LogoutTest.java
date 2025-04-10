@@ -8,11 +8,10 @@ import org.imz.utils.Cons;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import org.imz.base.BaseTest;
 
 public class LogoutTest extends LoginTest {
     private static final Logger logger = LogManager.getLogger(LogoutTest.class);
-    private LogoutPage logoutPage = new LogoutPage(driver);;
+    private final LogoutPage logoutPage = new LogoutPage(driver);
 
     @Test(dependsOnMethods = "testValidMultipleLogin", priority = 2)
     public void ensureLoggedOut() {
