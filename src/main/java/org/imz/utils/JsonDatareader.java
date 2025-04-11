@@ -8,17 +8,17 @@ import java.io.IOException;
 
 public class JsonDatareader {
 
-    public static Object[][] getValidLoginData(String filePath) {
+    public static Object[][] getValidLoginData(String filePath, String nodeName) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode rootNode = objectMapper.readTree(new File(filePath));
-            JsonNode accountsArray = rootNode.get("validaccounts");
+            JsonNode accountsArray = rootNode.get(nodeName);
 
             Object[][] loginData = new Object[accountsArray.size()][2];
 
             for (int i = 0; i < accountsArray.size(); i++) {
-                loginData[i][0] = accountsArray.get(i).get("username").asText();
-                loginData[i][1] = accountsArray.get(i).get("password").asText();
+                loginData[i][0] = accountsArray.get(i).get(Cons.userName).asText();
+                loginData[i][1] = accountsArray.get(i).get(Cons.userPassword).asText();
             }
 
             return loginData;
@@ -28,15 +28,4 @@ public class JsonDatareader {
         }
     }
 
-   /* public static Object[][] getInValidLoginData() {
-
-
-        Object[][] inValidLoginData = {
-                {"locked_out_user", "secret_sauce"}
-        };
-
-
-            return inValidLoginData;
-
-    }*/
 }

@@ -1876,3 +1876,11 @@ Session ID: c7ba7f0933383287c5afb02012df1685
 2025-04-10 19:48:12 [main] INFO  org.imz.tests.LoginTest - Locked Login successful!
 2025-04-10 19:48:12 [main] INFO  org.imz.tests.LoginTest - Attempting to logout after test...
 2025-04-10 19:48:12 [main] INFO  org.imz.tests.LoginTest - Logout successful.
+2025-04-12 00:23:14 [main] INFO  org.imz.tests.LoginTest - Initialized pages and navigated to base URL
+2025-04-12 00:23:15 [main] INFO  org.imz.tests.LoginTest - Login successful! visual_user
+2025-04-12 00:23:15 [main] INFO  org.imz.tests.LoginTest - Attempting to logout after test...
+2025-04-12 00:23:15 [main] INFO  org.imz.tests.LoginTest - Logout successful.
+2025-04-12 00:24:09 [main] INFO  org.imz.tests.LoginTest - Initialized pages and navigated to base URL
+2025-04-12 00:24:10 [main] INFO  org.imz.tests.LoginTest - Login successful! visual_user
+2025-04-12 00:50:26 [main] INFO  org.imz.tests.LoginTest - Initialized pages and navigated to base URL
+2025-04-12 00:50:27 [main] INFO  org.imz.tests.LoginTest - Login successful! visual_user

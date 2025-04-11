@@ -6,10 +6,21 @@
         <classes>
            <class name="org.imz.tests.LoginTest">
             <methods>
-                <include name="testValidMultipleLogin"/>
-                <include name="testLockedLogin"/>
+                <include name="testLogin"/>
             </methods>
             </class>
+
+            <class name="org.imz.tests.MultiLoginTest">
+                <methods>
+                    <include name="testValidMultipleLogin"/>
+                </methods>
+            </class>
+            <class name="org.imz.tests.LockedLoginTest">
+                <methods>
+                    <include name="testLockedLogin"/>
+                </methods>
+            </class>
+
            <class name="org.imz.tests.LogoutTest">
               <methods>
                  <include name="ensureLoggedOut"/>
