@@ -11,6 +11,10 @@ public class LogoutPage {
     WebDriver driver;
 
     public LogoutPage(WebDriver driver) {
+
+        if (driver == null) {
+            throw new IllegalArgumentException("WebDriver instance is null");
+        }
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
@@ -22,7 +26,6 @@ public class LogoutPage {
 
     @FindBy(id = "logout_sidebar_link")
     WebElement logoutButton;
-
 
 
     public void logout() {

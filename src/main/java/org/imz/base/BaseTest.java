@@ -1,24 +1,28 @@
 package org.imz.base;
 
 
+import org.imz.utils.Cons;
+import org.imz.utils.DriverFactory;
+import org.imz.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
 
-import org.testng.annotations.AfterSuite;
-
-import org.imz.utils.DriverManagerSingleton;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 public class BaseTest {
-    protected WebDriver driver;
 
-    @BeforeSuite
-    public void setup() {
-        driver = DriverManagerSingleton.getInstance().getDriver();
+    @BeforeMethod
+    @Parameters("browser")
+    public void setUp(String browser) {
+        // Initialize WebDriver using the browser name passed from the TestNG XML
+        WebDriver driver = DriverFactory.initializeDriver(browser);
+        DriverManager.setDriver(driver);
+        driver.get(Cons.BASE_WEB); // Open the website
     }
 
-   @AfterSuite
-   public void tearDown() {
-
-       DriverManagerSingleton.getInstance().quitDriver();
+    @AfterMethod
+    public void tearDown() {
+        //   DriverManager.quitDriver();  // Quit WebDriver and clean up after the test
     }
 }
