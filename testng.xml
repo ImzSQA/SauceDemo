@@ -1,32 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Sauce Demo Test Suite">
+<suite name="IMZ Automation Suite" thread-count="1">
 
-    <test name="Login Test">
+    <!-- ✅ Chrome run -->
+    <test name="Chrome_Login_Tests">
+        <parameter name="browser" value="chrome"/>
         <classes>
-           <class name="org.imz.tests.LoginTest">
-            <methods>
-                <include name="testLogin"/>
-            </methods>
-            </class>
 
-            <class name="org.imz.tests.MultiLoginTest">
+            <class name="org.imz.tests.LoginTest">
                 <methods>
-                    <include name="testValidMultipleLogin"/>
+                    <include name="testValidLogin"/>
                 </methods>
             </class>
+
+
             <class name="org.imz.tests.LockedLoginTest">
                 <methods>
                     <include name="testLockedLogin"/>
                 </methods>
             </class>
 
-           <class name="org.imz.tests.LogoutTest">
-              <methods>
-                 <include name="ensureLoggedOut"/>
-              </methods>
-           </class>
 
+             <class name="org.imz.tests.MultiLoginTest"/>
         </classes>
     </test>
+
+    <!--
+     <test name="Firefox_Login_Tests">
+         <parameter name="browser" value="firefox"/>
+         <classes>
+             <class name="org.imz.tests.LoginTest"/>
+             <class name="org.imz.tests.LockedLoginTest"/>
+             <class name="org.imz.tests.MultiLoginTest"/>
+         </classes>
+     </test>
+
+
+     -->
+
 </suite>
