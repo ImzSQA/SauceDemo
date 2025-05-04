@@ -5,24 +5,36 @@
     <test name="Chrome_Login_Tests">
         <parameter name="browser" value="chrome"/>
         <classes>
+
             <class name="org.imz.tests.LoginTest">
                 <methods>
                     <include name="testValidLogin"/>
                 </methods>
             </class>
-            <class name="org.imz.tests.LockedLoginTest"/>
-            <class name="org.imz.tests.MultiLoginTest"/>
+
+
+            <class name="org.imz.tests.LockedLoginTest">
+                <methods>
+                    <include name="testLockedLogin"/>
+                </methods>
+            </class>
+
+
+             <class name="org.imz.tests.MultiLoginTest"/>
         </classes>
     </test>
 
-   <!-- &lt;!&ndash; ✅ Firefox run &ndash;&gt;
-    <test name="Firefox_Login_Tests">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-            <class name="org.imz.tests.LoginTest"/>
-            <class name="org.imz.tests.LockedLoginTest"/>
-            <class name="org.imz.tests.MultiLoginTest"/>
-        </classes>
-    </test>-->
+    <!--
+     <test name="Firefox_Login_Tests">
+         <parameter name="browser" value="firefox"/>
+         <classes>
+             <class name="org.imz.tests.LoginTest"/>
+             <class name="org.imz.tests.LockedLoginTest"/>
+             <class name="org.imz.tests.MultiLoginTest"/>
+         </classes>
+     </test>
+
+
+     -->
 
 </suite>

@@ -26,17 +26,26 @@ public class LoginTest extends BaseTest {
         logger.info("Initialized pages and navigated to base URL.");
     }
 
+    @AfterMethod
+    public void tearDown() {
+        try {
+            DriverManager.quitDriver();
+        } catch (Exception e) {
+            logger.error("Logout failed or encountered an error.", e);
+        }
+    }
+
     @DataProvider(name = Cons.Node_Login)
     public Object[][] getLoginData() {
         return JsonDatareader.getValidLoginData(Cons.FileLoginPath, Cons.Node_Login);
     }
 
     @Test(dataProvider = Cons.Node_Login, priority = 1)
-    public ProductTest testValidLogin(String username, String password) {
+    public void testValidLogin(String username, String password) {
         productPage = loginPage.login(username, password);
         logger.info("Login successful! {}", username);
         Assert.assertTrue(productPage.isProductsPageVisible());
         Assert.assertEquals(productPage.getPageTitle(), "Products");
-        return new ProductTest();
+        driver.navigate().to("https://www.saucedemo.com/inventory.html");
     }
 }

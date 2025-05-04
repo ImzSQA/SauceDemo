@@ -12,8 +12,9 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
-    @BeforeMethod
+
     @Parameters("browser")
+    @BeforeMethod
     public void setUp(String browser) {
         // Initialize WebDriver using the browser name passed from the TestNG XML
         WebDriver driver = DriverFactory.initializeDriver(browser);

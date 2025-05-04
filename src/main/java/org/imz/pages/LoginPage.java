@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
     WebDriver driver;
-    private ProductPage pPage;
 
     public LoginPage(WebDriver driver) {
         if (driver == null) {

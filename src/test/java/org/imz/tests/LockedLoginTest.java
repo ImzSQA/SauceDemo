@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.imz.base.BaseTest;
 import org.imz.pages.LoginPage;
 import org.imz.utils.Cons;
-import org.imz.utils.DriverFactory;
+
 import org.imz.utils.DriverManager;
 import org.imz.utils.JsonDatareader;
 import org.openqa.selenium.WebDriver;
@@ -21,15 +21,14 @@ public class LockedLoginTest extends BaseTest {
     @BeforeMethod
     public void navigateToBaseUrl() {
         driver = DriverManager.getDriver();
-        //   driver.get(Cons.BASE_WEB);
         loginPage = new LoginPage(driver);
         logger.info("Initialized pages and navigated to base URL on browser: ");
     }
 
-/*    @AfterMethod
+    @AfterMethod
     public void tearDown() {
         DriverManager.quitDriver();
-    }*/
+    }
 
     @DataProvider(name = Cons.Node_Locked)
     public Object[][] getLockedLoginData() {

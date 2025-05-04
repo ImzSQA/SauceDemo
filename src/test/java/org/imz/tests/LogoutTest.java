@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class LogoutTest extends BaseTest {
     private static final Logger logger = LogManager.getLogger(LogoutTest.class);
@@ -24,6 +25,7 @@ public class LogoutTest extends BaseTest {
         logoutPage = new LogoutPage(driver);
     }
 
+    @Test
     public void ensureLoggedOut() {
         try {
 
@@ -38,8 +40,8 @@ public class LogoutTest extends BaseTest {
         }
     }
 
-/*    @AfterMethod()
+    @AfterMethod()
     public void tearDown() {
         DriverManager.quitDriver();
-    }*/
+    }
 }
